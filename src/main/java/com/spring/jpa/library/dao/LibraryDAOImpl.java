@@ -21,4 +21,9 @@ public class LibraryDAOImpl implements LibraryDAO {
         Pageable paging = PageRequest.of(cpg, 25, Sort.by("lbno").descending());
         return libraryRepository.findAll(paging).getContent();
     }
+
+    @Override
+    public int countLibrary() {
+        return libraryRepository.countLibraryBy();
+    }
 }

@@ -12,7 +12,7 @@ public class LibraryController {
 
 
     @Autowired
-    LibraryService lbsrv;
+    private LibraryService lbsrv;
 
     @GetMapping("/")
     public ModelAndView list(Integer cpg) {
@@ -20,6 +20,10 @@ public class LibraryController {
 
         if (cpg == null || cpg == 0) cpg = 1;
         mv.addObject("lblist", lbsrv.readLibrary(cpg));
+        mv.addObject("cpg",cpg);
+        mv.addObject("cntpg",lbsrv.countLibrary()); //총페이지
+        mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
+
 
         mv.setViewName("list");
 
