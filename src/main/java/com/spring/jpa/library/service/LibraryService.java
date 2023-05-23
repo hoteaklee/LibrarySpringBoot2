@@ -4,10 +4,11 @@ import com.spring.jpa.library.model.Library;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 
 public interface LibraryService {
-    List<Library> readLibrary(int cpg);
+    Map<String, Object> readLibrary(int cpg);
 
-    Object countLibrary();
+    //Object countLibrary();
 }

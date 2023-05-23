@@ -3,9 +3,10 @@ package com.spring.jpa.library.dao;
 import com.spring.jpa.library.model.Library;
 
 import java.util.List;
+import java.util.Map;
 
 public interface LibraryDAO {
-    List<Library> selectLibrary(int cpg);
+    Map<String, Object> selectLibrary(int cpg);
 
-    int countLibrary();
+    //int countLibrary();
 }

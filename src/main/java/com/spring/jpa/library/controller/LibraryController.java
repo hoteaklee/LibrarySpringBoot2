@@ -7,6 +7,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.Map;
+
 @Controller
 public class LibraryController {
 
@@ -19,9 +21,12 @@ public class LibraryController {
         ModelAndView mv = new ModelAndView();
 
         if (cpg == null || cpg == 0) cpg = 1;
-        mv.addObject("lblist", lbsrv.readLibrary(cpg));
+
+        Map<String, Object> libs = lbsrv.readLibrary(cpg);
+
+        mv.addObject("lblist", libs.get("lblist"));
         mv.addObject("cpg",cpg);
-        mv.addObject("cntpg",lbsrv.countLibrary()); //총페이지
+        mv.addObject("cntpg",libs.get("cntpg")); //총페이지
         mv.addObject("stpg", ((cpg - 1) / 10) * 10 + 1);
 
 
